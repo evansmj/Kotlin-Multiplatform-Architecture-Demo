@@ -1,35 +1,79 @@
 package com.oldgoat5.udemo
 
-import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.material.Button
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material.BottomNavigation
+import androidx.compose.material.BottomNavigationItem
+import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
-import androidx.compose.runtime.*
-import androidx.compose.ui.Alignment
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import org.jetbrains.compose.resources.painterResource
-import org.jetbrains.compose.ui.tooling.preview.Preview
-
-import udemo.composeapp.generated.resources.Res
-import udemo.composeapp.generated.resources.compose_multiplatform
+import androidx.navigation.NavGraph.Companion.findStartDestination
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.currentBackStackEntryAsState
+import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navDeepLink
+import com.oldgoat5.udemo.navigation.Routes
+import com.oldgoat5.udemo.navigation.topLevelRoutes
+import com.oldgoat5.udemo.ui.buy.BuyScreen
+import com.oldgoat5.udemo.ui.portfolio.PortfolioScreen
+import com.oldgoat5.udemo.ui.receive.ReceiveScreen
 
 @Composable
-@Preview
 fun App() {
+    // Buy, Portfolio, Receive
     MaterialTheme {
-        var showContent by remember { mutableStateOf(false) }
-        Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
-            Button(onClick = { showContent = !showContent }) {
-                Text("Click me!")
+        val uri = "https://www.udemo.com/" // todo: app / deep link uri
+
+        val navController = rememberNavController()
+
+        Scaffold(
+            bottomBar = {
+                BottomNavigation {
+                    val navBackStackEntry by navController.currentBackStackEntryAsState()
+                    val currentDestination = navBackStackEntry?.destination
+                    topLevelRoutes.forEach { topLevelRoute ->
+                        BottomNavigationItem(
+                            icon = { Icon(topLevelRoute.icon, topLevelRoute.contentDescription) },
+                            label = { Text(topLevelRoute.name) },
+                            selected = currentDestination?.route == topLevelRoute.route.toString(),
+                            onClick = {
+                                navController.navigate(topLevelRoute.route) {
+                                    popUpTo(navController.graph.findStartDestination().id) {
+                                        saveState = true
+                                    }
+                                    launchSingleTop = true
+                                    restoreState = true
+                                }
+                            }
+                        )
+                    }
+                }
             }
-            AnimatedVisibility(showContent) {
-                val greeting = remember { Greeting().greet() }
-                Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
-                    Image(painterResource(Res.drawable.compose_multiplatform), null)
-                    Text("Compose: $greeting")
+        ) { innerPadding ->
+
+            NavHost(
+                navController = navController,
+                startDestination = Routes.Portfolio,
+                Modifier.padding(innerPadding)
+            ) {
+                composable<Routes.Buy>(
+                    deepLinks = listOf(navDeepLink<Routes.Buy>(basePath = "$uri/buy"))
+                ) {
+                    BuyScreen()
+                }
+                composable<Routes.Portfolio>(
+                    deepLinks = listOf(navDeepLink<Routes.Portfolio>(basePath = "$uri/portfolio"))
+                ) {
+                    PortfolioScreen()
+                }
+                composable<Routes.Receive>(
+                    deepLinks = listOf(navDeepLink<Routes.Receive>(basePath = "$uri/receive"))
+                ) {
+                    ReceiveScreen()
                 }
             }
         }
