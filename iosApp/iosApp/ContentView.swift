@@ -2,32 +2,26 @@ import SwiftUI
 import Shared
 
 struct ContentView: View {
-    @State private var showContent = false
+    @State var selection = 1
+    
     var body: some View {
-        VStack {
-            Button("Click me!") {
-                withAnimation {
-                    showContent = !showContent
-                }
-            }
-
-            if showContent {
-                VStack(spacing: 16) {
-                    Image(systemName: "swift")
-                        .font(.system(size: 200))
-                        .foregroundColor(.accentColor)
-                    Text("SwiftUI: \(Greeting().greet())")
-                }
-                .transition(.move(edge: .top).combined(with: .opacity))
-            }
+        TabView(selection: $selection) {
+            Text("Buy")
+                .tabItem {
+                    Label("Buy", systemImage: "cart.fill")
+                }.tag(0)
+            PortfolioView()
+                .tabItem {
+                    Label("Portfolio", systemImage: "house.fill")
+                }.tag(1)
+            Text("Receive")
+                .tabItem {
+                    Label("Receive", systemImage: "plus.circle.fill")
+                }.tag(2)
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
-        .padding()
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
+#Preview {
+    ContentView()
 }
