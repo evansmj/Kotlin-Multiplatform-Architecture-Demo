@@ -24,10 +24,8 @@ import com.oldgoat5.udemo.ui.receive.ReceiveScreen
 
 @Composable
 fun App() {
-    // Buy, Portfolio, Receive
     MaterialTheme {
         val uri = "https://www.udemo.com/" // todo: app / deep link uri
-
         val navController = rememberNavController()
 
         Scaffold(

@@ -10,8 +10,8 @@ import kotlinx.serialization.Serializable
 data class TopLevelRoute<T : Any>(val name: String, val route: T, val icon: ImageVector, val contentDescription: String)
 
 val topLevelRoutes = listOf(
-    TopLevelRoute("Portfolio", Routes.Portfolio, Icons.Default.Home, "Portfolio"),
     TopLevelRoute("Buy", Routes.Buy, Icons.Default.ShoppingCart, "Buy"),
+    TopLevelRoute("Portfolio", Routes.Portfolio, Icons.Default.Home, "Portfolio"),
     TopLevelRoute("Receive", Routes.Receive, Icons.Default.Add, "Receive")
 )
 

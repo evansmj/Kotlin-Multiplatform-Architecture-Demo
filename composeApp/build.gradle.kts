@@ -25,6 +25,20 @@ kotlin {
             implementation(libs.androidx.navigation.compose)
             implementation(libs.material)
             implementation(libs.kotlinx.serialization.json)
+            implementation(libs.kotlinx.coroutines.android)
+            implementation(libs.koin.android)
+            implementation(libs.koin.androidx.compose)
+        }
+        androidUnitTest.dependencies {
+            implementation(kotlin("test-junit"))
+            implementation(libs.junit)
+            implementation(libs.kotlinx.coroutines.test)
+            implementation(libs.koin.test)
+        }
+        androidInstrumentedTest.dependencies {
+            implementation(libs.androidx.test.junit)
+            implementation(libs.androidx.espresso.core)
+            implementation(libs.androidx.ui.test.junit4)
         }
         commonMain.dependencies {
             implementation(compose.runtime)
@@ -50,6 +64,8 @@ android {
         targetSdk = libs.versions.android.targetSdk.get().toInt()
         versionCode = 1
         versionName = "1.0"
+
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
     packaging {
         resources {
@@ -68,5 +84,6 @@ android {
 }
 
 dependencies {
+    testImplementation(libs.junit.jupiter)
     debugImplementation(compose.uiTooling)
 }
