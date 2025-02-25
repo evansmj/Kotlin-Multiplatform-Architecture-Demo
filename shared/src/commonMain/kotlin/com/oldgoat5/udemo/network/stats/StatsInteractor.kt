@@ -1,5 +1,6 @@
 package com.oldgoat5.udemo.network.stats
 
+import com.oldgoat5.udemo.network.UDemoException
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.IO
@@ -17,14 +18,12 @@ class StatsInteractor(
 
     override suspend fun getStats(refresh: Boolean) {
         withContext(coroutineDispatcher) {
-            println("getStats()!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
             _state.update { StatsState.Loading }
             try {
                 val stats = statsRepository.getStats(refresh = true)
                 _state.update { StatsState.Success(stats) }
-                println("success!!!!!!!!!!!!")
             } catch (e: Exception) {
-                println("exception $e")
+                println("getStats() Exception: $e")
                 //errorDelegate.raiseException(e, suspend { this.refresh() })
                 if (e is UDemoException) {
                     _state.update { StatsState.Error(e.data as StatsResponse?) }

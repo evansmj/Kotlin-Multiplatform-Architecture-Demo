@@ -19,7 +19,10 @@ val networkModule = module {
     single {
         HttpClient {
             install(ContentNegotiation) {
-                json(Json { ignoreUnknownKeys = true })
+                json(Json {
+                    ignoreUnknownKeys = true
+                    prettyPrint = true
+                })
             }
             install(Logging) {
                 logger = getPlatformLogger()
@@ -35,5 +38,5 @@ val networkModule = module {
         }
     }
 
-    single<IStatsRemoteDataSource> { StatsRemoteDataSource(get())}
+    single<IStatsRemoteDataSource> { StatsRemoteDataSource(get()) }
 }

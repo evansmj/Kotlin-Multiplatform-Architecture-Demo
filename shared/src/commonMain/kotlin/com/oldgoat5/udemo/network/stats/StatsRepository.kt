@@ -1,5 +1,6 @@
 package com.oldgoat5.udemo.network.stats
 
+import com.oldgoat5.udemo.network.UDemoException
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 
