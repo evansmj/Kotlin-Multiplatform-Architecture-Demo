@@ -5,18 +5,23 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.oldgoat5.udemo.network.stats.StatsState
-import org.koin.compose.koinInject
 
 @Composable
 fun PortfolioScreen(
-    portfolioViewModel: PortfolioViewModel = koinInject()
+    portfolioViewModel: PortfolioViewModel = viewModel()
 ) {
     val statsState by portfolioViewModel.statsState.collectAsState()
+
+    LaunchedEffect(Unit) {
+        portfolioViewModel.fetchStats()
+    }
 
     Spacer(Modifier.padding(16.dp))
 

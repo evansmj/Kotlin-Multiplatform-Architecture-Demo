@@ -1,6 +1,8 @@
 package com.oldgoat5.udemo.network.stats
 
 import com.oldgoat5.udemo.network.UDemoException
+import com.rickclephas.kmp.nativecoroutines.NativeCoroutines
+import com.rickclephas.kmp.nativecoroutines.NativeCoroutinesState
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.IO
@@ -14,8 +16,11 @@ class StatsInteractor(
     private val coroutineDispatcher: CoroutineDispatcher = Dispatchers.IO
 ) : IStatsInteractor {
     private val _state = MutableStateFlow<StatsState>(StatsState.None)
+
+    @NativeCoroutinesState
     override val state = _state.asStateFlow()
 
+    @NativeCoroutines
     override suspend fun getStats(refresh: Boolean) {
         withContext(coroutineDispatcher) {
             _state.update { StatsState.Loading }

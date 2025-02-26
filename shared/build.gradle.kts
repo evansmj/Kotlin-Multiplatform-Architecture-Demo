@@ -1,3 +1,4 @@
+import com.rickclephas.kmp.nativecoroutines.gradle.ExposedSeverity
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import java.util.Properties
@@ -95,6 +96,11 @@ tasks.register("generateConfig") {
         )
     }
 }
+
 tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
     dependsOn("generateConfig")
+}
+
+nativeCoroutines {
+    exposedSeverity = ExposedSeverity.ERROR
 }

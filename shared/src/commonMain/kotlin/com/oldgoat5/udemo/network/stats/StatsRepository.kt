@@ -1,6 +1,7 @@
 package com.oldgoat5.udemo.network.stats
 
 import com.oldgoat5.udemo.network.UDemoException
+import com.rickclephas.kmp.nativecoroutines.NativeCoroutines
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 
@@ -10,6 +11,7 @@ class StatsRepository(
     private val statsMutex = Mutex()
     private var cachedStats: StatsResponse? = null
 
+    @NativeCoroutines
     override suspend fun getStats(refresh: Boolean): StatsResponse {
         return try {
             if (refresh || cachedStats == null) {
