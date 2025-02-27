@@ -5,22 +5,22 @@ import com.rickclephas.kmp.nativecoroutines.NativeCoroutines
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 
-class StatsRepository(
-    private val statsRemoteDataSource: IStatsRemoteDataSource
-) : IStatsRepository {
+class BitcoinStatsRepository(
+    private val statsRemoteDataSource: IBitcoinStatsRemoteDataSource
+) : IBitcoinStatsRepository {
     private val statsMutex = Mutex()
-    private var cachedStats: StatsResponse? = null
+    private var cachedStats: BitcoinStatsData? = null
 
     @NativeCoroutines
-    override suspend fun getStats(refresh: Boolean): StatsResponse {
+    override suspend fun getStats(refresh: Boolean): BitcoinStatsData {
         return try {
             if (refresh || cachedStats == null) {
                 val networkResult = statsRemoteDataSource.fetchStats()
                 statsMutex.withLock {
-                    this.cachedStats = networkResult
+                    this.cachedStats = networkResult.data["1"]!!
                 }
             }
-            statsMutex.withLock { this.cachedStats!! } // can not be null
+            statsMutex.withLock { this.cachedStats!! }
         } catch (e: Exception) {
             throw UDemoException(this.cachedStats, e)
         }

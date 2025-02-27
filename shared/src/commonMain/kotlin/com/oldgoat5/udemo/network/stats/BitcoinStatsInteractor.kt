@@ -11,11 +11,11 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.withContext
 
-class StatsInteractor(
-    private val statsRepository: IStatsRepository,
+class BitcoinStatsInteractor(
+    private val statsRepository: IBitcoinStatsRepository,
     private val coroutineDispatcher: CoroutineDispatcher = Dispatchers.IO
-) : IStatsInteractor {
-    private val _state = MutableStateFlow<StatsState>(StatsState.None)
+) : IBitcoinStatsInteractor {
+    private val _state = MutableStateFlow<BitcoinStatsState>(BitcoinStatsState.None)
 
     @NativeCoroutinesState
     override val state = _state.asStateFlow()
@@ -23,15 +23,17 @@ class StatsInteractor(
     @NativeCoroutines
     override suspend fun getStats(refresh: Boolean) {
         withContext(coroutineDispatcher) {
-            _state.update { StatsState.Loading }
+            _state.update { BitcoinStatsState.Loading }
             try {
                 val stats = statsRepository.getStats(refresh = true)
-                _state.update { StatsState.Success(stats) }
+                _state.update { BitcoinStatsState.Success(stats) }
             } catch (e: Exception) {
                 println("getStats() Exception: $e")
                 //errorDelegate.raiseException(e, suspend { this.refresh() })
                 if (e is UDemoException) {
-                    _state.update { StatsState.Error(e.data as StatsResponse?) }
+                    _state.update { BitcoinStatsState.Error(e.data as BitcoinStatsData?) }
+                } else {
+                    _state.update { BitcoinStatsState.Error(null) }
                 }
             }
         }

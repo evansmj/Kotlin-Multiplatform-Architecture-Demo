@@ -2,8 +2,10 @@ package com.oldgoat5.udemo.di
 
 import com.oldgoat5.udemo.config.Config
 import com.oldgoat5.udemo.network.getPlatformLogger
-import com.oldgoat5.udemo.network.stats.IStatsRemoteDataSource
-import com.oldgoat5.udemo.network.stats.StatsRemoteDataSource
+import com.oldgoat5.udemo.network.stats.BitcoinStatsRemoteDataSource
+import com.oldgoat5.udemo.network.stats.IBitcoinStatsRemoteDataSource
+import com.oldgoat5.udemo.network.user.IUserDataRemoteDataSource
+import com.oldgoat5.udemo.network.user.UserDataRemoteDataSource
 import io.ktor.client.HttpClient
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
 import io.ktor.client.plugins.defaultRequest
@@ -38,5 +40,6 @@ val networkModule = module {
         }
     }
 
-    single<IStatsRemoteDataSource> { StatsRemoteDataSource(get()) }
+    single<IBitcoinStatsRemoteDataSource> { BitcoinStatsRemoteDataSource(get()) }
+    single<IUserDataRemoteDataSource> { UserDataRemoteDataSource() }
 }

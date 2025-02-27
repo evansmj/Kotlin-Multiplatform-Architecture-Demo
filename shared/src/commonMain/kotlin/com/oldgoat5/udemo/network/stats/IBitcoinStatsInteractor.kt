@@ -4,9 +4,9 @@ import com.rickclephas.kmp.nativecoroutines.NativeCoroutines
 import com.rickclephas.kmp.nativecoroutines.NativeCoroutinesState
 import kotlinx.coroutines.flow.StateFlow
 
-interface IStatsInteractor {
+interface IBitcoinStatsInteractor {
     @NativeCoroutinesState
-    val state: StateFlow<StatsState>
+    val state: StateFlow<BitcoinStatsState>
     @NativeCoroutines
     suspend fun getStats(refresh: Boolean)
 }

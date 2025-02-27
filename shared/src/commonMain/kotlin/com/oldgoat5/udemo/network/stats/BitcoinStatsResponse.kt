@@ -4,12 +4,12 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class StatsResponse(
-    @SerialName("data") val data: Map<String, StatsData>
+data class BitcoinStatsResponse(
+    @SerialName("data") val data: Map<String, BitcoinStatsData>
 )
 
 @Serializable
-data class StatsData(
+data class BitcoinStatsData(
     @SerialName("id") val id: Int,
     @SerialName("name") val name: String,
     @SerialName("symbol") val symbol: String,

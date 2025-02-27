@@ -6,10 +6,10 @@ import io.ktor.client.call.body
 import io.ktor.client.request.get
 import io.ktor.http.path
 
-class StatsRemoteDataSource(private val httpClient: HttpClient) : IStatsRemoteDataSource {
+class BitcoinStatsRemoteDataSource(private val httpClient: HttpClient) : IBitcoinStatsRemoteDataSource {
 
     @NativeCoroutines
-    override suspend fun fetchStats(): StatsResponse {
+    override suspend fun fetchStats(): BitcoinStatsResponse {
         return httpClient.get {
             url {
                 path("/v2/cryptocurrency/quotes/latest")

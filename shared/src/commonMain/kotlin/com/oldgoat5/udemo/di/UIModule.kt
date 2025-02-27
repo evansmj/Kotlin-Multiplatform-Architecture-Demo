@@ -1,12 +1,19 @@
 package com.oldgoat5.udemo.di
 
-import com.oldgoat5.udemo.network.stats.IStatsInteractor
-import com.oldgoat5.udemo.network.stats.IStatsRepository
-import com.oldgoat5.udemo.network.stats.StatsInteractor
-import com.oldgoat5.udemo.network.stats.StatsRepository
+import com.oldgoat5.udemo.network.stats.BitcoinStatsInteractor
+import com.oldgoat5.udemo.network.stats.BitcoinStatsRepository
+import com.oldgoat5.udemo.network.stats.IBitcoinStatsInteractor
+import com.oldgoat5.udemo.network.stats.IBitcoinStatsRepository
+import com.oldgoat5.udemo.network.user.IUserDataInteractor
+import com.oldgoat5.udemo.network.user.IUserDataRepository
+import com.oldgoat5.udemo.network.user.UserDataInteractor
+import com.oldgoat5.udemo.network.user.UserDataRepository
 import org.koin.dsl.module
 
-val uiModule = module {
-    single<IStatsRepository> { StatsRepository(get()) }
-    single<IStatsInteractor> { StatsInteractor(get()) }
+val domainModule = module {
+    single<IBitcoinStatsRepository> { BitcoinStatsRepository(get()) }
+    single<IBitcoinStatsInteractor> { BitcoinStatsInteractor(get()) }
+
+    single<IUserDataRepository> { UserDataRepository(get()) }
+    single<IUserDataInteractor> { UserDataInteractor(get()) }
 }

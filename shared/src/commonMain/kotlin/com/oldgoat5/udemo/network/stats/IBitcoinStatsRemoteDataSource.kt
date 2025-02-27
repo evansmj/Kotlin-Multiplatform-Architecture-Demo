@@ -2,7 +2,8 @@ package com.oldgoat5.udemo.network.stats
 
 import com.rickclephas.kmp.nativecoroutines.NativeCoroutines
 
-interface IStatsRepository {
+interface IBitcoinStatsRemoteDataSource {
+
     @NativeCoroutines
-    suspend fun getStats(refresh: Boolean): StatsResponse
+    suspend fun fetchStats(): BitcoinStatsResponse
 }

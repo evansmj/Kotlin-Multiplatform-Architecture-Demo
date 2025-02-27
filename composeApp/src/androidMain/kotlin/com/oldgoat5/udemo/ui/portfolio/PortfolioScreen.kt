@@ -1,50 +1,79 @@
 package com.oldgoat5.udemo.ui.portfolio
 
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material.CircularProgressIndicator
+import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.oldgoat5.udemo.network.stats.StatsState
 
 @Composable
 fun PortfolioScreen(
     portfolioViewModel: PortfolioViewModel = viewModel()
 ) {
-    val statsState by portfolioViewModel.statsState.collectAsState()
+    val isLoading by portfolioViewModel.isLoading.collectAsStateWithLifecycle()
+    val error by portfolioViewModel.error.collectAsStateWithLifecycle()
+    val portfolioItemsList by portfolioViewModel.portfolioItemsList.collectAsStateWithLifecycle()
 
     LaunchedEffect(Unit) {
-        portfolioViewModel.fetchStats()
+        portfolioViewModel.fetchBitcoinStats()
+        portfolioViewModel.fetchUserData()
     }
 
-    Spacer(Modifier.padding(16.dp))
+    Surface(
+        modifier = Modifier.fillMaxSize(),
+        color = Color(0xFF002851)
+    ) {
 
-    when (statsState) {
-        is StatsState.Loading -> {
-            CircularProgressIndicator()
+        if (isLoading) {
+            Box(
+                modifier = Modifier.fillMaxSize(),
+                contentAlignment = Alignment.Center
+            ) {
+                CircularProgressIndicator()
+            }
         }
 
-        is StatsState.Success -> {
-            val data = (statsState as StatsState.Success).stats
-            val bitcoinData = data.data["1"]
-            bitcoinData?.let { Text(text = it.name) }
+        if (!error.isNullOrEmpty()) {
+            Box(
+                modifier = Modifier.fillMaxSize(),
+                contentAlignment = Alignment.Center
+            ) {
+                Text("Error message: $error", color = Color.Red)
+            }
         }
 
-        is StatsState.Error -> {
-            val maybeData = (statsState as StatsState.Error).cachedStats
-            val cachedBitcoinData = maybeData?.data?.get("1")
-            cachedBitcoinData?.let { Text(text = "cached data = ${cachedBitcoinData.name}") }
-                ?: Text(text = "Error and No data found")
-        }
+        if (portfolioItemsList.isNotEmpty()) {
+            LazyColumn(
+                modifier = Modifier.fillMaxSize(),
+                contentPadding = PaddingValues(16.dp),
+                verticalArrangement = Arrangement.spacedBy(8.dp)
+            ) {
+                items(portfolioItemsList) { item ->
+                    when (item) {
+                        is PortfolioItem.PortfolioCardData -> PortfolioCard(
+                            item.bitcoinPrice,
+                            item.bitcoin24HChange,
+                            item.bitcoinHoldingsBtc,
+                        )
 
-        StatsState.None -> {
-
+                        is PortfolioItem.CashCardData -> CashCard(item.dollarBalance)
+                        is PortfolioItem.VaultCardData -> VaultCard()
+                    }
+                }
+            }
         }
     }
 }
