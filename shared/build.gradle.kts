@@ -12,6 +12,7 @@ plugins {
 }
 
 kotlin {
+    jvm()
     androidTarget {
         @OptIn(ExperimentalKotlinGradlePluginApi::class)
         compilerOptions {
@@ -49,6 +50,21 @@ kotlin {
                 implementation(libs.kotlinx.serialization.json)
                 implementation(libs.kotlinx.coroutines.core)
                 implementation(libs.koin.core)
+            }
+        }
+        commonTest {
+            dependencies {
+                implementation(kotlin("test"))
+                implementation(libs.kotlinx.coroutines.core)
+                implementation(libs.kotlinx.coroutines.test)
+                implementation(libs.turbine)
+            }
+        }
+        jvmTest {
+            dependencies {
+                implementation(kotlin("test-junit"))
+                implementation(libs.kotlin.test.junit)
+                implementation(libs.turbine)
             }
         }
         androidMain.dependencies {

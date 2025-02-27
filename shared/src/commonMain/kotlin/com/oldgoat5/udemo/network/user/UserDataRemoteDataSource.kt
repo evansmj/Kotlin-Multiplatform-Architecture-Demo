@@ -6,6 +6,6 @@ class UserDataRemoteDataSource: IUserDataRemoteDataSource {
 
     @NativeCoroutines
     override suspend fun fetchUserData(): UserDataResponse {
-        return UserDataResponse
+        return UserDataResponse()
     }
 }
