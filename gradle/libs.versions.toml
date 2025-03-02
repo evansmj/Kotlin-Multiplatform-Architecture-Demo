@@ -12,6 +12,7 @@ androidx-lifecycle = "2.8.4"
 androidx-material = "1.12.0"
 androidx-test-junit = "1.2.1"
 compose-multiplatform = "1.7.0"
+glanceAppwidget = "1.1.1"
 junit = "4.13.2"
 kmpObservableviewmodelCore = "1.0.0-BETA-9"
 koinCore = "3.5.0"
@@ -33,6 +34,9 @@ ksp = "2.1.10-1.0.29"
 mockk = "1.13.16"
 
 [libraries]
+androidx-glance-appwidget = { module = "androidx.glance:glance-appwidget", version.ref = "glanceAppwidget" }
+androidx-glance-material = { module = "androidx.glance:glance-material", version.ref = "glanceAppwidget" }
+androidx-glance-material3 = { module = "androidx.glance:glance-material3", version.ref = "glanceAppwidget" }
 androidx-navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "navigationCompose" }
 androidx-ui-test-junit4 = { module = "androidx.compose.ui:ui-test-junit4", version.ref = "uiTestJunit4" }
 jetbrains-kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test" }

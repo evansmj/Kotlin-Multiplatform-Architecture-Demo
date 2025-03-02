@@ -28,6 +28,9 @@ kotlin {
             implementation(libs.kotlinx.coroutines.android)
             implementation(libs.koin.android)
             implementation(libs.koin.androidx.compose)
+            implementation(libs.androidx.glance.appwidget)
+            implementation(libs.androidx.glance.material3)
+            implementation(libs.androidx.glance.material)
         }
         androidUnitTest.dependencies {
             implementation(kotlin("test-junit"))
