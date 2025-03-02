@@ -1,40 +1,33 @@
 package com.oldgoat5.udemo.ui.portfolio
 
-import com.oldgoat5.udemo.network.stats.BitcoinStatsData
-import com.oldgoat5.udemo.network.stats.BitcoinStatsState
+import app.cash.turbine.test
 import com.oldgoat5.udemo.network.stats.BitcoinStatsTestDataFactory
 import com.oldgoat5.udemo.network.stats.FakeBitcoinStatsInteractor
 import com.oldgoat5.udemo.network.stats.IBitcoinStatsInteractor
 import com.oldgoat5.udemo.network.user.FakeUserDataInteractor
 import com.oldgoat5.udemo.network.user.IUserDataInteractor
-import com.oldgoat5.udemo.network.user.UserDataState
 import com.oldgoat5.udemo.network.user.UserTestDataFactory
-import com.oldgoat5.udemo.ui.portfolio.PortfolioViewModel
 import com.oldgoat5.udemo.util.calculateDollarBalance
-import org.koin.core.context.startKoin
-import org.koin.core.context.stopKoin
-import org.koin.core.module.Module
-import org.koin.dsl.module
+import com.oldgoat5.udemo.util.formatDollars
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.test.StandardTestDispatcher
-import kotlinx.coroutines.test.advanceUntilIdle
 import kotlinx.coroutines.test.resetMain
 import kotlinx.coroutines.test.runTest
 import kotlinx.coroutines.test.setMain
+import org.koin.core.context.startKoin
+import org.koin.core.context.stopKoin
+import org.koin.dsl.module
 import org.koin.mp.KoinPlatform.getKoin
 import kotlin.test.AfterTest
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
-import kotlin.test.assertTrue
-import kotlin.test.assertNotNull
-import kotlin.test.assertFailsWith
-import kotlin.time.Duration.Companion.seconds
-import kotlin.time.ExperimentalTime
-import app.cash.turbine.test
 
+/**
+ * CI should run 'android (local)' and 'iosSimulatorArm64' test, so that the separate 'actual' functions
+ * such as in FormatUtil.kt get tested with this test.
+ */
 @OptIn(ExperimentalCoroutinesApi::class)
 class PortfolioViewModelTest {
     private lateinit var fakeBitcoinStatsInteractor: FakeBitcoinStatsInteractor
@@ -140,11 +133,11 @@ class PortfolioViewModelTest {
 
         val expectedPortfolioItems = listOf(
             PortfolioItem.PortfolioCardData(
-                bitcoinPrice = 50000.0,
-                bitcoin24HChange = 2.5,
-                bitcoinHoldingsBtc = 1.0
+                bitcoinPrice = "$50,000.00",
+                bitcoin24HChange = "2.5%",
+                bitcoinHoldingsBtc = "1.0 BTC"
             ),
-            PortfolioItem.CashCardData(calculateDollarBalance(50000.0, 100_000_000)),
+            PortfolioItem.CashCardData(formatDollars(calculateDollarBalance(50000.0, 100_000_000))),
             PortfolioItem.VaultCardData()
         )
 

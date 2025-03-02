@@ -10,6 +10,7 @@ import com.oldgoat5.udemo.ui.portfolio.PortfolioItem.CashCardData
 import com.oldgoat5.udemo.ui.portfolio.PortfolioItem.PortfolioCardData
 import com.oldgoat5.udemo.ui.portfolio.PortfolioItem.VaultCardData
 import com.oldgoat5.udemo.util.calculateDollarBalance
+import com.oldgoat5.udemo.util.formatDollars
 import com.oldgoat5.udemo.util.satsToBtc
 import com.rickclephas.kmp.nativecoroutines.NativeCoroutines
 import com.rickclephas.kmp.nativecoroutines.NativeCoroutinesState
@@ -73,9 +74,9 @@ class PortfolioViewModel : ViewModel(), KoinComponent {
 
         itemsList.add(
             PortfolioCardData(
-                round(bitcoinStats.quote.usd.price * 100) / 100,
-                round(bitcoinStats.quote.usd.percentChange24h * 100) / 100,
-                satsToBtc(userData.bitcoinHoldingsSats)
+                formatDollars(round(bitcoinStats.quote.usd.price * 100) / 100),
+                (round(bitcoinStats.quote.usd.percentChange24h * 100) / 100).toString() + "%",
+                satsToBtc(userData.bitcoinHoldingsSats).toString() + " BTC"
             )
         )
 
@@ -86,7 +87,7 @@ class PortfolioViewModel : ViewModel(), KoinComponent {
             ) * 100
         ) / 100
 
-        itemsList.add(CashCardData(dollarBalance))
+        itemsList.add(CashCardData(formatDollars(dollarBalance)))
 
         itemsList.add(VaultCardData())
 

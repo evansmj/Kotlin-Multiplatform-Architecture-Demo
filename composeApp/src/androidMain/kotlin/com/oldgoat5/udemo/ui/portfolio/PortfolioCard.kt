@@ -14,7 +14,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun PortfolioCard(bitcoinPrice: Double, bitcoin24HChange: Double, bitcoinHoldingsBtc: Double) {
+fun PortfolioCard(bitcoinPrice: String, bitcoin24HChange: String, bitcoinHoldingsBtc: String) {
     Card(
         modifier = Modifier
             .background(Color.White)
@@ -27,9 +27,9 @@ fun PortfolioCard(bitcoinPrice: Double, bitcoin24HChange: Double, bitcoinHolding
                 .padding(16.dp)
         ) {
             Text("Portfolio")
-            Text("$bitcoinHoldingsBtc BTC")
-            Text("$$bitcoinPrice")
-            Text("$bitcoin24HChange%")
+            Text(bitcoinHoldingsBtc)
+            Text(bitcoinPrice)
+            Text(bitcoin24HChange)
         }
     }
 }

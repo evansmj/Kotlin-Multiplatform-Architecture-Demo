@@ -14,7 +14,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun CashCard(dollarBalance: Double) {
+fun CashCard(dollarBalance: String) {
     Card(
         modifier = Modifier
             .background(Color.White)
@@ -27,7 +27,7 @@ fun CashCard(dollarBalance: Double) {
                 .padding(16.dp)
         ) {
             Text("Cash:")
-            Text("$$dollarBalance")
+            Text(dollarBalance)
         }
     }
 }
