@@ -1,22 +1,22 @@
 import SwiftUICore
 
 struct PortfolioCard: View {
-    let bitcoinPrice: Double
-    let bitcoin24HChange: Double
-    let bitcoinHoldingsBtc: Double
+    let bitcoinPrice: String
+    let bitcoin24HChange: String
+    let bitcoinHoldingsBtc: String
     
     var body: some View {
         VStack(alignment: .center, spacing: 8) {
             Text("Portfolio")
                 .font(.headline)
             
-            Text("\(bitcoinHoldingsBtc, specifier: "%.8f") BTC")
+            Text(bitcoinHoldingsBtc)
                 .font(.subheadline)
             
-            Text("$\(bitcoinPrice, specifier: "%.2f")")
+            Text(bitcoinPrice)
                 .font(.subheadline)
             
-            Text("\(bitcoin24HChange, specifier: "%.2f")%")
+            Text(bitcoin24HChange)
                 .font(.subheadline)
         }
         .frame(maxWidth: .infinity, minHeight: 100, alignment: .leading)

@@ -1,14 +1,14 @@
 import SwiftUICore
 
 struct CashCard: View {
-    let dollarBalance: Double
+    let dollarBalance: String
     
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             Text("Cash:")
                 .font(.headline)
             
-            Text("$\(dollarBalance, specifier: "%.2f")")
+            Text(dollarBalance)
                 .font(.subheadline)
         }
         .padding()
