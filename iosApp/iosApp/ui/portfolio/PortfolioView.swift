@@ -8,7 +8,7 @@ struct PortfolioView: View {
     @State private var isLoading: Bool = false
     @State private var error: String? = nil
     @State private var portfolioItemList: [PortfolioItem] = []
-    
+
     var body: some View {
         ZStack {
             Color(UIColor(red: 0x00 / 255.0, green: 0x28 / 255.0, blue: 0x51 / 255.0, alpha: 1.0))

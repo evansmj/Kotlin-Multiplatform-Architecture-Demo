@@ -5,6 +5,9 @@ import com.rickclephas.kmp.nativecoroutines.NativeCoroutines
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 
+/**
+ * The repository can be used to return fresh network data, or data from the local cache.
+ */
 class BitcoinStatsRepository(
     private val statsRemoteDataSource: IBitcoinStatsRemoteDataSource
 ) : IBitcoinStatsRepository {

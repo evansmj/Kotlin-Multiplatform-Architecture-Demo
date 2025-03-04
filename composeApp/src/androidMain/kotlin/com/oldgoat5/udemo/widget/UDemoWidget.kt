@@ -22,6 +22,9 @@ import org.koin.mp.KoinPlatform.getKoin
 class UDemoWidget : GlanceAppWidget() {
 
     override suspend fun provideGlance(context: Context, id: GlanceId) {
+
+        // Replace these calls with a call to the database.  It is best practice to get widget data
+        // from local storage.  Price data can be scheduled to be updated every once in a while.
         val repository: IBitcoinStatsRepository = getKoin().get()
         val bitcoinStats = repository.getStats(true)
 

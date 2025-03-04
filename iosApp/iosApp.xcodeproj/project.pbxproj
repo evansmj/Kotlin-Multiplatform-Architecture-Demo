@@ -11,6 +11,21 @@
 		058557D9273AAEEB004C7B11 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 058557D8273AAEEB004C7B11 /* Preview Assets.xcassets */; };
 		2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2152FB032600AC8F00CF470E /* iOSApp.swift */; };
 		7555FF83242A565900829871 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7555FF82242A565900829871 /* ContentView.swift */; };
+		B9457C512D7556F000C085E8 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9457C322D75530900C085E8 /* WidgetKit.framework */; };
+		B9457C522D7556F000C085E8 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9457C342D75530900C085E8 /* SwiftUI.framework */; };
+		B9457C5F2D7556F200C085E8 /* UDemoWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = B9457C502D7556F000C085E8 /* UDemoWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		B9457C652D76A97000C085E8 /* KMPObservableViewModelCore in Frameworks */ = {isa = PBXBuildFile; productRef = B9457C642D76A97000C085E8 /* KMPObservableViewModelCore */; };
+		B9457C672D76A97000C085E8 /* KMPObservableViewModelSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = B9457C662D76A97000C085E8 /* KMPObservableViewModelSwiftUI */; };
+		B9457C6D2D76A97000C085E8 /* KMPNativeCoroutinesCombine in Frameworks */ = {isa = PBXBuildFile; productRef = B9457C6C2D76A97000C085E8 /* KMPNativeCoroutinesCombine */; };
+		B9457C6F2D76A97000C085E8 /* KMPNativeCoroutinesCore in Frameworks */ = {isa = PBXBuildFile; productRef = B9457C6E2D76A97000C085E8 /* KMPNativeCoroutinesCore */; };
+		B9457C712D76A97000C085E8 /* KMPNativeCoroutinesRxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = B9457C702D76A97000C085E8 /* KMPNativeCoroutinesRxSwift */; };
+		B9457C742D76AA5800C085E8 /* RxBlocking in Frameworks */ = {isa = PBXBuildFile; productRef = B9457C732D76AA5800C085E8 /* RxBlocking */; };
+		B9457C782D76AA5800C085E8 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = B9457C772D76AA5800C085E8 /* RxCocoa */; };
+		B9457C7C2D76AA5800C085E8 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = B9457C7B2D76AA5800C085E8 /* RxRelay */; };
+		B9457C8D2D76AA8300C085E8 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = B9457C8C2D76AA8300C085E8 /* RxSwift */; };
+		B9457C982D7768E600C085E8 /* RxBlocking in Frameworks */ = {isa = PBXBuildFile; productRef = B9457C972D7768E600C085E8 /* RxBlocking */; };
+		B9457C9A2D7768EB00C085E8 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = B9457C992D7768EB00C085E8 /* RxCocoa */; };
+		B9457C9C2D77727400C085E8 /* KMPNativeCoroutinesAsync in Frameworks */ = {isa = PBXBuildFile; productRef = B9457C9B2D77727400C085E8 /* KMPNativeCoroutinesAsync */; };
 		B9BA66672D6E7DE900DFFDB0 /* KMPObservableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BA66662D6E7DE900DFFDB0 /* KMPObservableViewModel.swift */; };
 		B9BA666D2D6E9A2700DFFDB0 /* KMPObservableViewModelCore in Frameworks */ = {isa = PBXBuildFile; productRef = B9BA666C2D6E9A2700DFFDB0 /* KMPObservableViewModelCore */; };
 		B9BA666F2D6E9A2700DFFDB0 /* KMPObservableViewModelSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = B9BA666E2D6E9A2700DFFDB0 /* KMPObservableViewModelSwiftUI */; };
@@ -20,6 +35,40 @@
 		B9BA667A2D6EC7E300DFFDB0 /* KMPNativeCoroutinesRxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = B9BA66792D6EC7E300DFFDB0 /* KMPNativeCoroutinesRxSwift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		B9457C5D2D7556F200C085E8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7555FF73242A565900829871 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B9457C4F2D7556F000C085E8;
+			remoteInfo = UDemoWidgetExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		B9457C4B2D75530B00C085E8 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				B9457C5F2D7556F200C085E8 /* UDemoWidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B9457C962D76AA8300C085E8 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		058557BA273AAA24004C7B11 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		058557D8273AAEEB004C7B11 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -28,10 +77,24 @@
 		7555FF82242A565900829871 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		7555FF8C242A565B00829871 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AB3632DC29227652001CCB65 /* Config.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
+		B9457C322D75530900C085E8 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		B9457C342D75530900C085E8 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		B9457C502D7556F000C085E8 /* UDemoWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = UDemoWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9BA66662D6E7DE900DFFDB0 /* KMPObservableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KMPObservableViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		B9457C602D7556F200C085E8 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = B9457C4F2D7556F000C085E8 /* UDemoWidgetExtension */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		B9457C532D7556F000C085E8 /* UDemoWidget */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (B9457C602D7556F200C085E8 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = UDemoWidget; sourceTree = "<group>"; };
 		B9565EAE2D6A1649005A8EB2 /* ui */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = ui; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
@@ -40,12 +103,33 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B9457C782D76AA5800C085E8 /* RxCocoa in Frameworks */,
 				B9BA666D2D6E9A2700DFFDB0 /* KMPObservableViewModelCore in Frameworks */,
 				B9BA66782D6EC7E300DFFDB0 /* KMPNativeCoroutinesCore in Frameworks */,
 				B9BA66762D6EC7E300DFFDB0 /* KMPNativeCoroutinesCombine in Frameworks */,
 				B9BA667A2D6EC7E300DFFDB0 /* KMPNativeCoroutinesRxSwift in Frameworks */,
 				B9BA666F2D6E9A2700DFFDB0 /* KMPObservableViewModelSwiftUI in Frameworks */,
 				B9BA66742D6EC7E300DFFDB0 /* KMPNativeCoroutinesAsync in Frameworks */,
+				B9457C742D76AA5800C085E8 /* RxBlocking in Frameworks */,
+				B9457C7C2D76AA5800C085E8 /* RxRelay in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B9457C4D2D7556F000C085E8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B9457C522D7556F000C085E8 /* SwiftUI.framework in Frameworks */,
+				B9457C982D7768E600C085E8 /* RxBlocking in Frameworks */,
+				B9457C9A2D7768EB00C085E8 /* RxCocoa in Frameworks */,
+				B9457C672D76A97000C085E8 /* KMPObservableViewModelSwiftUI in Frameworks */,
+				B9457C9C2D77727400C085E8 /* KMPNativeCoroutinesAsync in Frameworks */,
+				B9457C6F2D76A97000C085E8 /* KMPNativeCoroutinesCore in Frameworks */,
+				B9457C712D76A97000C085E8 /* KMPNativeCoroutinesRxSwift in Frameworks */,
+				B9457C6D2D76A97000C085E8 /* KMPNativeCoroutinesCombine in Frameworks */,
+				B9457C8D2D76AA8300C085E8 /* RxSwift in Frameworks */,
+				B9457C512D7556F000C085E8 /* WidgetKit.framework in Frameworks */,
+				B9457C652D76A97000C085E8 /* KMPObservableViewModelCore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +147,8 @@
 		42799AB246E5F90AF97AA0EF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B9457C322D75530900C085E8 /* WidgetKit.framework */,
+				B9457C342D75530900C085E8 /* SwiftUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -72,6 +158,7 @@
 			children = (
 				AB1DB47929225F7C00F7AF9C /* Configuration */,
 				7555FF7D242A565900829871 /* iosApp */,
+				B9457C532D7556F000C085E8 /* UDemoWidget */,
 				7555FF7C242A565900829871 /* Products */,
 				42799AB246E5F90AF97AA0EF /* Frameworks */,
 			);
@@ -81,6 +168,7 @@
 			isa = PBXGroup;
 			children = (
 				7555FF7B242A565900829871 /* UDemo.app */,
+				B9457C502D7556F000C085E8 /* UDemoWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -118,10 +206,12 @@
 				7555FF77242A565900829871 /* Sources */,
 				B92378962B6B1156000C7307 /* Frameworks */,
 				7555FF79242A565900829871 /* Resources */,
+				B9457C4B2D75530B00C085E8 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				B9457C5E2D7556F200C085E8 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				B9565EAE2D6A1649005A8EB2 /* ui */,
@@ -134,10 +224,45 @@
 				B9BA66752D6EC7E300DFFDB0 /* KMPNativeCoroutinesCombine */,
 				B9BA66772D6EC7E300DFFDB0 /* KMPNativeCoroutinesCore */,
 				B9BA66792D6EC7E300DFFDB0 /* KMPNativeCoroutinesRxSwift */,
+				B9457C732D76AA5800C085E8 /* RxBlocking */,
+				B9457C772D76AA5800C085E8 /* RxCocoa */,
+				B9457C7B2D76AA5800C085E8 /* RxRelay */,
 			);
 			productName = iosApp;
 			productReference = 7555FF7B242A565900829871 /* UDemo.app */;
 			productType = "com.apple.product-type.application";
+		};
+		B9457C4F2D7556F000C085E8 /* UDemoWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B9457C612D7556F200C085E8 /* Build configuration list for PBXNativeTarget "UDemoWidgetExtension" */;
+			buildPhases = (
+				B9457C4C2D7556F000C085E8 /* Sources */,
+				B9457C4D2D7556F000C085E8 /* Frameworks */,
+				B9457C4E2D7556F000C085E8 /* Resources */,
+				B9457C962D76AA8300C085E8 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				B9457C532D7556F000C085E8 /* UDemoWidget */,
+			);
+			name = UDemoWidgetExtension;
+			packageProductDependencies = (
+				B9457C642D76A97000C085E8 /* KMPObservableViewModelCore */,
+				B9457C662D76A97000C085E8 /* KMPObservableViewModelSwiftUI */,
+				B9457C6C2D76A97000C085E8 /* KMPNativeCoroutinesCombine */,
+				B9457C6E2D76A97000C085E8 /* KMPNativeCoroutinesCore */,
+				B9457C702D76A97000C085E8 /* KMPNativeCoroutinesRxSwift */,
+				B9457C8C2D76AA8300C085E8 /* RxSwift */,
+				B9457C972D7768E600C085E8 /* RxBlocking */,
+				B9457C992D7768EB00C085E8 /* RxCocoa */,
+				B9457C9B2D77727400C085E8 /* KMPNativeCoroutinesAsync */,
+			);
+			productName = UDemoWidgetExtension;
+			productReference = B9457C502D7556F000C085E8 /* UDemoWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -146,12 +271,15 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
-				LastSwiftUpdateCheck = 1130;
+				LastSwiftUpdateCheck = 1620;
 				LastUpgradeCheck = 1540;
 				ORGANIZATIONNAME = orgName;
 				TargetAttributes = {
 					7555FF7A242A565900829871 = {
 						CreatedOnToolsVersion = 11.3.1;
+					};
+					B9457C4F2D7556F000C085E8 = {
+						CreatedOnToolsVersion = 16.2;
 					};
 				};
 			};
@@ -166,14 +294,15 @@
 			mainGroup = 7555FF72242A565900829871;
 			packageReferences = (
 				B9BA666B2D6E9A2700DFFDB0 /* XCLocalSwiftPackageReference "../../KMP-ObservableViewModel" */,
-				B9BA66702D6E9D7B00DFFDB0 /* XCLocalSwiftPackageReference "../../RxSwift" */,
 				B9BA66722D6EC7E300DFFDB0 /* XCLocalSwiftPackageReference "../../KMP-NativeCoroutines" */,
+				B9457C722D76AA5700C085E8 /* XCLocalSwiftPackageReference "../../RxSwift" */,
 			);
 			productRefGroup = 7555FF7C242A565900829871 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				7555FF7A242A565900829871 /* iosApp */,
+				B9457C4F2D7556F000C085E8 /* UDemoWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -185,6 +314,13 @@
 			files = (
 				058557D9273AAEEB004C7B11 /* Preview Assets.xcassets in Resources */,
 				058557BB273AAA24004C7B11 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B9457C4E2D7556F000C085E8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -222,7 +358,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B9457C4C2D7556F000C085E8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B9457C5E2D7556F200C085E8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B9457C4F2D7556F000C085E8 /* UDemoWidgetExtension */;
+			targetProxy = B9457C5D2D7556F200C085E8 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		7555FFA3242A565B00829871 /* Debug */ = {
@@ -399,6 +550,76 @@
 			};
 			name = Release;
 		};
+		B9457C622D7556F200C085E8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = "${TEAM_ID}";
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = UDemoWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = UDemoWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2025 orgName. All rights reserved.";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.oldgoat5.udemo.UDemo.UDemoWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B9457C632D7556F200C085E8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "${TEAM_ID}";
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = UDemoWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = UDemoWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2025 orgName. All rights reserved.";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.oldgoat5.udemo.UDemo.UDemoWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -420,16 +641,25 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		B9457C612D7556F200C085E8 /* Build configuration list for PBXNativeTarget "UDemoWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B9457C622D7556F200C085E8 /* Debug */,
+				B9457C632D7556F200C085E8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
 
 /* Begin XCLocalSwiftPackageReference section */
+		B9457C722D76AA5700C085E8 /* XCLocalSwiftPackageReference "../../RxSwift" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ../../RxSwift;
+		};
 		B9BA666B2D6E9A2700DFFDB0 /* XCLocalSwiftPackageReference "../../KMP-ObservableViewModel" */ = {
 			isa = XCLocalSwiftPackageReference;
 			relativePath = "../../KMP-ObservableViewModel";
-		};
-		B9BA66702D6E9D7B00DFFDB0 /* XCLocalSwiftPackageReference "../../RxSwift" */ = {
-			isa = XCLocalSwiftPackageReference;
-			relativePath = ../../RxSwift;
 		};
 		B9BA66722D6EC7E300DFFDB0 /* XCLocalSwiftPackageReference "../../KMP-NativeCoroutines" */ = {
 			isa = XCLocalSwiftPackageReference;
@@ -438,6 +668,63 @@
 /* End XCLocalSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		B9457C642D76A97000C085E8 /* KMPObservableViewModelCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B9BA666B2D6E9A2700DFFDB0 /* XCLocalSwiftPackageReference "../../KMP-ObservableViewModel" */;
+			productName = KMPObservableViewModelCore;
+		};
+		B9457C662D76A97000C085E8 /* KMPObservableViewModelSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B9BA666B2D6E9A2700DFFDB0 /* XCLocalSwiftPackageReference "../../KMP-ObservableViewModel" */;
+			productName = KMPObservableViewModelSwiftUI;
+		};
+		B9457C6C2D76A97000C085E8 /* KMPNativeCoroutinesCombine */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B9BA66722D6EC7E300DFFDB0 /* XCLocalSwiftPackageReference "../../KMP-NativeCoroutines" */;
+			productName = KMPNativeCoroutinesCombine;
+		};
+		B9457C6E2D76A97000C085E8 /* KMPNativeCoroutinesCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B9BA66722D6EC7E300DFFDB0 /* XCLocalSwiftPackageReference "../../KMP-NativeCoroutines" */;
+			productName = KMPNativeCoroutinesCore;
+		};
+		B9457C702D76A97000C085E8 /* KMPNativeCoroutinesRxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B9BA66722D6EC7E300DFFDB0 /* XCLocalSwiftPackageReference "../../KMP-NativeCoroutines" */;
+			productName = KMPNativeCoroutinesRxSwift;
+		};
+		B9457C732D76AA5800C085E8 /* RxBlocking */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = RxBlocking;
+		};
+		B9457C772D76AA5800C085E8 /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = RxCocoa;
+		};
+		B9457C7B2D76AA5800C085E8 /* RxRelay */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = RxRelay;
+		};
+		B9457C8C2D76AA8300C085E8 /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B9457C722D76AA5700C085E8 /* XCLocalSwiftPackageReference "../../RxSwift" */;
+			productName = RxSwift;
+		};
+		B9457C972D7768E600C085E8 /* RxBlocking */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B9457C722D76AA5700C085E8 /* XCLocalSwiftPackageReference "../../RxSwift" */;
+			productName = RxBlocking;
+		};
+		B9457C992D7768EB00C085E8 /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B9457C722D76AA5700C085E8 /* XCLocalSwiftPackageReference "../../RxSwift" */;
+			productName = RxCocoa;
+		};
+		B9457C9B2D77727400C085E8 /* KMPNativeCoroutinesAsync */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B9BA66722D6EC7E300DFFDB0 /* XCLocalSwiftPackageReference "../../KMP-NativeCoroutines" */;
+			productName = KMPNativeCoroutinesAsync;
+		};
 		B9BA666C2D6E9A2700DFFDB0 /* KMPObservableViewModelCore */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = KMPObservableViewModelCore;
