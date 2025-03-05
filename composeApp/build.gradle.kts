@@ -23,14 +23,13 @@ kotlin {
             implementation(compose.preview)
             implementation(libs.androidx.activity.compose)
             implementation(libs.androidx.navigation.compose)
-            implementation(libs.material)
+            implementation(libs.androidx.material3)
             implementation(libs.kotlinx.serialization.json)
             implementation(libs.kotlinx.coroutines.android)
             implementation(libs.koin.android)
             implementation(libs.koin.androidx.compose)
             implementation(libs.androidx.glance.appwidget)
             implementation(libs.androidx.glance.material3)
-            implementation(libs.androidx.glance.material)
         }
         androidUnitTest.dependencies {
             implementation(kotlin("test-junit"))

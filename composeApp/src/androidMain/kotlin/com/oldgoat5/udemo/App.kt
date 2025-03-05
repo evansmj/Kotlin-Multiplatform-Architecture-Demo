@@ -1,18 +1,19 @@
 package com.oldgoat5.udemo
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.BottomNavigation
-import androidx.compose.material.BottomNavigationItem
-import androidx.compose.material.Icon
-import androidx.compose.material.IconButton
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Scaffold
-import androidx.compose.material.Text
-import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.outlined.Info
 import androidx.compose.material.icons.outlined.Notifications
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.NavigationBar
+import androidx.compose.material3.NavigationBarItem
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
@@ -27,10 +28,13 @@ import com.oldgoat5.udemo.navigation.topLevelRoutes
 import com.oldgoat5.udemo.ui.buy.BuyScreen
 import com.oldgoat5.udemo.ui.portfolio.PortfolioScreen
 import com.oldgoat5.udemo.ui.receive.ReceiveScreen
+import com.oldgoat5.udemo.ui.theme.AppTheme
 
+@SuppressLint("RestrictedApi")
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun App() {
-    MaterialTheme() {
+    AppTheme() {
         val uri = "https://www.udemo.com/" // todo: app / deep link uri
         val navController = rememberNavController()
 
@@ -65,14 +69,14 @@ fun App() {
                 )
             },
             bottomBar = {
-                BottomNavigation {
+                NavigationBar {
                     val navBackStackEntry by navController.currentBackStackEntryAsState()
                     val currentDestination = navBackStackEntry?.destination
                     topLevelRoutes.forEach { topLevelRoute ->
-                        BottomNavigationItem(
+                        NavigationBarItem(
                             icon = { Icon(topLevelRoute.icon, topLevelRoute.contentDescription) },
                             label = { Text(topLevelRoute.name) },
-                            selected = currentDestination?.route == topLevelRoute.route.toString(),
+                            selected = currentDestination?.route == topLevelRoute.route,
                             onClick = {
                                 navController.navigate(topLevelRoute.route) {
                                     popUpTo(navController.graph.findStartDestination().id) {
@@ -93,18 +97,21 @@ fun App() {
                 startDestination = Routes.Portfolio,
                 Modifier.padding(innerPadding)
             ) {
-                composable<Routes.Buy>(
-                    deepLinks = listOf(navDeepLink<Routes.Buy>(basePath = "$uri/buy"))
+                composable(
+                    route = Routes.Buy,
+                    deepLinks = listOf(navDeepLink { uriPattern = "$uri/buy" })
                 ) {
                     BuyScreen()
                 }
-                composable<Routes.Portfolio>(
-                    deepLinks = listOf(navDeepLink<Routes.Portfolio>(basePath = "$uri/portfolio"))
+                composable(
+                    route = Routes.Portfolio,
+                    deepLinks = listOf(navDeepLink { uriPattern = "$uri/portfolio"})
                 ) {
                     PortfolioScreen()
                 }
-                composable<Routes.Receive>(
-                    deepLinks = listOf(navDeepLink<Routes.Receive>(basePath = "$uri/receive"))
+                composable(
+                    route = Routes.Receive,
+                    deepLinks = listOf(navDeepLink { uriPattern = "$uri/receive" })
                 ) {
                     ReceiveScreen()
                 }
