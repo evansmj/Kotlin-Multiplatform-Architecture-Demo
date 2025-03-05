@@ -1,6 +1,5 @@
 package com.oldgoat5.udemo
 
-import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Menu
@@ -17,6 +16,7 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -30,7 +30,6 @@ import com.oldgoat5.udemo.ui.portfolio.PortfolioScreen
 import com.oldgoat5.udemo.ui.receive.ReceiveScreen
 import com.oldgoat5.udemo.ui.theme.AppTheme
 
-@SuppressLint("RestrictedApi")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun App() {
@@ -42,13 +41,13 @@ fun App() {
             topBar = {
                 TopAppBar(
                     title = {
-                        Text("Personal account")
+                        Text(stringResource(R.string.toolbar_personal_account))
                     },
                     navigationIcon = {
                         IconButton(onClick = {}) {
                             Icon(
                                 imageVector = Icons.Default.Menu,
-                                contentDescription = "Menu"
+                                contentDescription = stringResource(R.string.toolbar_menu_content_description)
                             )
                         }
                     },
@@ -56,13 +55,13 @@ fun App() {
                         IconButton(onClick = {}) {
                             Icon(
                                 imageVector = Icons.Outlined.Notifications,
-                                contentDescription = "Notifications"
+                                contentDescription = stringResource(R.string.toolbar_notifications_content_description)
                             )
                         }
                         IconButton(onClick = {}) {
                             Icon(
                                 imageVector = Icons.Outlined.Info,
-                                contentDescription = "Help"
+                                contentDescription = stringResource(R.string.toolbar_info_content_description)
                             )
                         }
                     }
@@ -75,7 +74,7 @@ fun App() {
                     topLevelRoutes.forEach { topLevelRoute ->
                         NavigationBarItem(
                             icon = { Icon(topLevelRoute.icon, topLevelRoute.contentDescription) },
-                            label = { Text(topLevelRoute.name) },
+                            label = { Text(stringResource(topLevelRoute.nameRes)) },
                             selected = currentDestination?.route == topLevelRoute.route,
                             onClick = {
                                 navController.navigate(topLevelRoute.route) {

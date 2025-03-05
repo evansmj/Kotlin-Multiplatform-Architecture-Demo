@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">UDemo</string>
+    <string name="header_portfolio">Portfolio</string>
+    <string name="navbar_buy">Buy</string>
+    <string name="navbar_portfolio">Portfolio</string>
+    <string name="navbar_receive">Receive</string>
+    <string name="toolbar_personal_account">Personal Account</string>
+    <string name="toolbar_menu_content_description">Menu</string>
+    <string name="toolbar_info_content_description">Info</string>
+    <string name="toolbar_notifications_content_description">Notifications</string>
+    <string name="cash_header">Cash:</string>
+    <string name="vault_button">Open a vault</string>
 </resources>

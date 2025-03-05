@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">UDemo</string>
+    <string name="header_portfolio">Cartera</string>
+    <string name="navbar_buy">Compra</string>
+    <string name="navbar_portfolio">Cartera</string>
+    <string name="navbar_receive">Recibir</string>
+    <string name="toolbar_personal_account">Cuenta Personal</string>
+    <string name="toolbar_menu_content_description">Menú</string>
+    <string name="toolbar_info_content_description">Información</string>
+    <string name="toolbar_notifications_content_description">Notificaciónes</string>
+    <string name="cash_header">Dinero:</string>
+    <string name="vault_button">Abre una bóveda</string>
+</resources>
