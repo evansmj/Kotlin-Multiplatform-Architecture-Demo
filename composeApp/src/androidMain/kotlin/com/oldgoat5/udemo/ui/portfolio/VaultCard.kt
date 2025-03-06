@@ -8,8 +8,10 @@ import androidx.compose.ui.res.stringResource
 import com.oldgoat5.udemo.R
 
 @Composable
-fun VaultCard() {
-    Button(onClick = {}) {
+fun VaultCard(
+    onNavigateToCreateVault: () -> Unit
+) {
+    Button(onClick = onNavigateToCreateVault) {
         Text(stringResource(R.string.vault_button), style = MaterialTheme.typography.labelMedium)
     }
 }

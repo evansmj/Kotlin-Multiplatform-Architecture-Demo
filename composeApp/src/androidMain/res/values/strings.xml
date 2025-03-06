@@ -10,4 +10,6 @@
     <string name="toolbar_notifications_content_description">Notifications</string>
     <string name="cash_header">Cash:</string>
     <string name="vault_button">Open a vault</string>
+    <string name="vault_create_header">Create a Vault</string>
+    <string name="close">Close</string>
 </resources>

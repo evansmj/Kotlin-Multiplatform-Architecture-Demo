@@ -29,12 +29,13 @@ import com.oldgoat5.udemo.ui.buy.BuyScreen
 import com.oldgoat5.udemo.ui.portfolio.PortfolioScreen
 import com.oldgoat5.udemo.ui.receive.ReceiveScreen
 import com.oldgoat5.udemo.ui.theme.AppTheme
+import com.oldgoat5.udemo.ui.vault.create.CreateVaultScreen
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun App() {
     AppTheme() {
-        val uri = "https://www.udemo.com/" // todo: app / deep link uri
+        val uri = "udemo://"
         val navController = rememberNavController()
 
         Scaffold(
@@ -68,24 +69,27 @@ fun App() {
                 )
             },
             bottomBar = {
-                NavigationBar {
-                    val navBackStackEntry by navController.currentBackStackEntryAsState()
-                    val currentDestination = navBackStackEntry?.destination
-                    topLevelRoutes.forEach { topLevelRoute ->
-                        NavigationBarItem(
-                            icon = { Icon(topLevelRoute.icon, topLevelRoute.contentDescription) },
-                            label = { Text(stringResource(topLevelRoute.nameRes)) },
-                            selected = currentDestination?.route == topLevelRoute.route,
-                            onClick = {
-                                navController.navigate(topLevelRoute.route) {
-                                    popUpTo(navController.graph.findStartDestination().id) {
-                                        saveState = true
+                val navBackStackEntry by navController.currentBackStackEntryAsState()
+                val currentDestination = navBackStackEntry?.destination
+
+                if (currentDestination?.route in topLevelRoutes.map { it.route }) {
+                    NavigationBar {
+                        topLevelRoutes.forEach { topLevelRoute ->
+                            NavigationBarItem(
+                                icon = { Icon(topLevelRoute.icon, topLevelRoute.contentDescription) },
+                                label = { Text(stringResource(topLevelRoute.nameRes)) },
+                                selected = currentDestination?.route == topLevelRoute.route,
+                                onClick = {
+                                    navController.navigate(topLevelRoute.route) {
+                                        popUpTo(navController.graph.findStartDestination().id) {
+                                            saveState = true
+                                        }
+                                        launchSingleTop = true
+                                        restoreState = true
                                     }
-                                    launchSingleTop = true
-                                    restoreState = true
                                 }
-                            }
-                        )
+                            )
+                        }
                     }
                 }
             }
@@ -96,6 +100,7 @@ fun App() {
                 startDestination = Routes.Portfolio,
                 Modifier.padding(innerPadding)
             ) {
+                //region home
                 composable(
                     route = Routes.Buy,
                     deepLinks = listOf(navDeepLink { uriPattern = "$uri/buy" })
@@ -104,15 +109,25 @@ fun App() {
                 }
                 composable(
                     route = Routes.Portfolio,
-                    deepLinks = listOf(navDeepLink { uriPattern = "$uri/portfolio"})
+                    deepLinks = listOf(navDeepLink { uriPattern = "$uri/portfolio" })
                 ) {
-                    PortfolioScreen()
+                    PortfolioScreen(
+                        onNavigateToCreateVault = { navController.navigate(route = Routes.CreateVault) }
+                    )
                 }
                 composable(
                     route = Routes.Receive,
                     deepLinks = listOf(navDeepLink { uriPattern = "$uri/receive" })
                 ) {
                     ReceiveScreen()
+                }
+                //endregion
+
+                composable(
+                    route = Routes.CreateVault,
+                    deepLinks = listOf(navDeepLink { uriPattern = "$uri/create-vault" })
+                ) {
+                    CreateVaultScreen(onClose = { navController.popBackStack() })
                 }
             }
         }

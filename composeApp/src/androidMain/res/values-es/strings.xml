@@ -11,4 +11,6 @@
     <string name="toolbar_notifications_content_description">Notificaciónes</string>
     <string name="cash_header">Dinero:</string>
     <string name="vault_button">Abre una bóveda</string>
+    <string name="vault_create_header">Crea una bóveda</string>
+    <string name="close">Cerrar</string>
 </resources>

@@ -20,4 +20,5 @@ object Routes {
     const val Portfolio = "portfolio"
     const val Buy = "buy"
     const val Receive = "receive"
+    const val CreateVault = "create-vault"
 }

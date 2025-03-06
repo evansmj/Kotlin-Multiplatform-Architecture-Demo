@@ -22,6 +22,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 
 @Composable
 fun PortfolioScreen(
+    onNavigateToCreateVault: () -> Unit,
     portfolioViewModel: PortfolioViewModel = viewModel()
 ) {
     val isLoading by portfolioViewModel.isLoading.collectAsStateWithLifecycle()
@@ -71,7 +72,7 @@ fun PortfolioScreen(
                         )
 
                         is PortfolioItem.CashCardData -> CashCard(item.dollarBalance)
-                        is PortfolioItem.VaultCardData -> VaultCard()
+                        is PortfolioItem.VaultCardData -> VaultCard(onNavigateToCreateVault = onNavigateToCreateVault)
                     }
                 }
             }
