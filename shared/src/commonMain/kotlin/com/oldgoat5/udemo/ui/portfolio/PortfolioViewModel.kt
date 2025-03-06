@@ -30,9 +30,12 @@ class PortfolioViewModel : ViewModel(), KoinComponent {
     private val userDataInteractor: IUserDataInteractor by inject()
 
     @NativeCoroutinesState
-    val isLoading: StateFlow<Boolean> = bitcoinStatsInteractor.state
-        .map { it is BitcoinStatsState.Loading }
-        .stateIn(viewModelScope, SharingStarted.Eagerly, false)
+    val isLoading: StateFlow<Boolean> = combine(
+        bitcoinStatsInteractor.state.map { it is BitcoinStatsState.Loading },
+        userDataInteractor.state.map { it is UserDataState.Loading }
+    ) { isStatsLoading, isUserLoading ->
+        isStatsLoading || isUserLoading
+    }.stateIn(viewModelScope, SharingStarted.Eagerly, false)
 
     @NativeCoroutinesState
     val portfolioItemsList: StateFlow<List<PortfolioItem>> =

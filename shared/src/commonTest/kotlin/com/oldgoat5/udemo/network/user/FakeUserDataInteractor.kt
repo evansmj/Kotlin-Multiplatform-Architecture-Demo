@@ -18,6 +18,11 @@ class FakeUserDataInteractor : IUserDataInteractor {
         _state.emit(UserDataState.Error(null))
     }
 
+    @NativeCoroutinesIgnore
+    suspend fun emitLoading() {
+        _state.emit((UserDataState.Loading))
+    }
+
     override suspend fun getUserData() {
         // no-op
     }

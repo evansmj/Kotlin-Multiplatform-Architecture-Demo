@@ -63,6 +63,38 @@ class PortfolioViewModelTest {
     }
 
     @Test
+    fun `fetchBitcoinStats loading but user data success`() = runTest {
+        fakeBitcoinStatsInteractor.emitLoading()
+        fakeUserDataInteractor.emitSuccess(UserTestDataFactory.createUserDataResponse())
+
+        viewModel.fetchBitcoinStats()
+        viewModel.fetchUserData()
+
+        viewModel.isLoading.test {
+            val initialState = awaitItem()
+            val loadingState = awaitItem()
+            assertEquals(false, initialState)
+            assertEquals(true, loadingState)
+        }
+    }
+
+    @Test
+    fun `fetchBitcoinStats success but user data loading`() = runTest {
+        fakeBitcoinStatsInteractor.emitSuccess(BitcoinStatsTestDataFactory.createBitcoinStatsData())
+        fakeUserDataInteractor.emitLoading()
+
+        viewModel.fetchBitcoinStats()
+        viewModel.fetchUserData()
+
+        viewModel.isLoading.test {
+            val initialState = awaitItem()
+            val loadingState = awaitItem()
+            assertEquals(false, initialState)
+            assertEquals(true, loadingState)
+        }
+    }
+
+    @Test
     fun `fetchBitcoinStats success but user data error`() = runTest {
         fakeBitcoinStatsInteractor.emitSuccess(
             BitcoinStatsTestDataFactory.createBitcoinStatsData(
