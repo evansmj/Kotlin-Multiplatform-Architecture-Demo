@@ -8,7 +8,7 @@ struct PortfolioView: View {
     @State private var isLoading: Bool = false
     @State private var error: String? = nil
     @State private var portfolioItemList: [PortfolioItem] = []
-
+    
     var body: some View {
         ZStack {
             Color(UIColor(red: 0x00 / 255.0, green: 0x28 / 255.0, blue: 0x51 / 255.0, alpha: 1.0))
@@ -48,39 +48,39 @@ struct PortfolioView: View {
         .onAppear {
             Task {
                 do {
-                    try await asyncFunction(for: portfolioViewModel.fetchBitcoinStats())
+                    async let fetchStats = asyncFunction(for: portfolioViewModel.fetchBitcoinStats())
+                    async let fetchUser = asyncFunction(for: portfolioViewModel.fetchUserData())
+                    
+                    try await fetchStats
+                    try await fetchUser
                 } catch {
-                    print("Error fetching bitcoin stats \(error)")
+                    print("Error fetching data: \(error)")
                 }
-            }
-            Task {
-                do {
-                    try await asyncFunction(for: portfolioViewModel.fetchUserData())
-                } catch {
-                    print("Error fetching user data")
-                }
-            }
-            Task {
-                do {
-                    let sequence = asyncSequence(for: portfolioViewModel.isLoadingFlow)
-                    for try await item in sequence {
-                        isLoading = item.boolValue
+                
+                Task {
+                    do {
+                        let sequence = asyncSequence(for: portfolioViewModel.isLoadingFlow)
+                        for try await item in sequence {
+                            isLoading = item.boolValue
+                        }
                     }
                 }
-            }
-            Task {
-                do {
-                    let sequence = asyncSequence(for: portfolioViewModel.errorFlow)
-                    for try await item in sequence {
-                        error = item
+                
+                Task {
+                    do {
+                        let sequence = asyncSequence(for: portfolioViewModel.errorFlow)
+                        for try await item in sequence {
+                            error = item
+                        }
                     }
                 }
-            }
-            Task {
-                do {
-                    let sequence = asyncSequence(for: portfolioViewModel.portfolioItemsListFlow)
-                    for try await list in sequence {
-                        portfolioItemList = list
+                
+                Task {
+                    do {
+                        let sequence = asyncSequence(for: portfolioViewModel.portfolioItemsListFlow)
+                        for try await list in sequence {
+                            portfolioItemList = list
+                        }
                     }
                 }
             }
